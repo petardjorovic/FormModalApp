@@ -1,0 +1,37 @@
+.outer-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inner-modal {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 500px;
+  position: relative;
+  text-align: center;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background-color: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.big-btn {
+  border-radius: 8px;
+  background-color: indigo;
+  color: #fff;
+  width: 50%;
+}
