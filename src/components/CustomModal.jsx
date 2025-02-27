@@ -3,7 +3,7 @@ import "./Modal.css";
 function CustomModal({ isOpen, closeModal, currentUser }) {
   if (!isOpen) return;
   return (
-    <div className="outer-modal">
+    <div className="outer-modal z-3">
       <div className="inner-modal">
         <h1>{currentUser.firstName} Info</h1>
         <p>{currentUser.bio}</p>
@@ -14,7 +14,7 @@ function CustomModal({ isOpen, closeModal, currentUser }) {
         <p>
           {currentUser.skills.map((skill, index) => {
             return (
-              <span className="badge bg-danger m-2" key={index}>
+              <span className="badge bg-danger m-1" key={index}>
                 {skill}
               </span>
             );

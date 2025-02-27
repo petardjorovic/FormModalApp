@@ -1,8 +1,7 @@
 import { useState } from "react";
-import users from "../fake-users.json";
 import CustomModal from "./CustomModal";
 
-function MainTable() {
+function MainTable({ users }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
 
