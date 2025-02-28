@@ -12,11 +12,6 @@ function FormComponent({ saveNewUser }) {
     Java: { title: "Java", isChecked: false },
     Python: { title: "Python", isChecked: false },
   });
-  const [isAllSelected, setIsAllSelected] = useState(false);
-  const [isGenderSelected, setIsGenderSelected] = useState({
-    Male: { isChecked: false },
-    Female: { isChecked: false },
-  });
 
   const SaveNewForm = (e) => {
     e.preventDefault();
@@ -51,11 +46,6 @@ function FormComponent({ saveNewUser }) {
       Java: { title: "Java", isChecked: false },
       Python: { title: "Python", isChecked: false },
     });
-    setIsAllSelected(false);
-    setIsGenderSelected({
-      Male: { isChecked: false },
-      Female: { isChecked: false },
-    });
   };
 
   const handleSkill = (e) => {
@@ -64,7 +54,7 @@ function FormComponent({ saveNewUser }) {
   };
 
   const selectAllSkills = (e) => {
-    setIsAllSelected(e.target.checked);
+    e.preventDefault();
     setSkills({
       Javascript: { title: "Javascript", isChecked: true },
       PHP: { title: "PHP", isChecked: true },
@@ -73,14 +63,6 @@ function FormComponent({ saveNewUser }) {
     });
   };
 
-  const handleGender = (e) => {
-    const { value, checked } = e.target;
-    setGender(value);
-    setIsGenderSelected({
-      ...isGenderSelected,
-      [value]: { isChecked: checked },
-    });
-  };
   return (
     <div className="row">
       <div className="col-6 offset-3">
@@ -114,18 +96,18 @@ function FormComponent({ saveNewUser }) {
             type="radio"
             name="gender"
             value={"Male"}
-            onChange={handleGender}
+            onChange={(e) => setGender(e.target.value)}
             className="m-1"
-            checked={isGenderSelected.Male.isChecked}
+            checked={gender === "Male" ? true : false}
           />
           Male
           <input
             type="radio"
             name="gender"
             value={"Female"}
-            onChange={handleGender}
+            onChange={(e) => setGender(e.target.value)}
             className="m-1"
-            checked={isGenderSelected.Female.isChecked}
+            checked={gender === "Female" ? true : false}
           />
           Female
           <h4>Bio</h4>
@@ -167,17 +149,13 @@ function FormComponent({ saveNewUser }) {
             checked={skills.Python.isChecked}
             onChange={handleSkill}
           />
-          Python
-          <input
-            type="checkbox"
-            name="All"
-            className="m-1"
-            onChange={selectAllSkills}
-            checked={isAllSelected}
-          />
-          Select All
-          <button type="submit" className="btn btn-primary form-control">
-            Save
+          Python <br />
+          <button className="btn btn-primary form-control w-50">Save</button>
+          <button
+            className="btn btn-success w-25 ms-3"
+            onClick={selectAllSkills}
+          >
+            All skills
           </button>
         </form>
       </div>
